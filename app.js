@@ -28,52 +28,16 @@ app.set('view engine', 'ejs');
 //  Collecting Data
 
 // Register and Login
-app.get('/create-user', (req, res) => {
-    res.send('Register Page');
-});
+const mainRoutes = require('./routes/main');
+const userRoutes = require('./routes/user');
 
-app.post('/create-user', (req, res, next) => {
-    let user = new User();
+app.use(mainRoutes);
+app.use(userRoutes);
 
-    user.profile.name = req.body.name;
-    user.password = req.body.password;
-    user.email = req.body.email;
-
-    user.save((err) => {
-        if (err) return next(err);
-        res.json("Successfully created a new user.");
-    });
-});
-
-app.get('/login', (req, res) => {
-    res.send("Login page");
-});
 
 
 //  Main traveling routes
-app.get('/', (req, res) => {
-    res.render('main/home');
-});
 
-app.get('/about', (req, res) => {
-    res.render('main/about');
-});
-
-app.get('/xiaomi', (req, res) => {
-    res.send('Xiaomi');
-});
-
-app.get('/oppo', (req, res) => {
-    res.send('Oppo');
-});
-
-app.get('/huawei', (req, res) => {
-    res.send('Huawei');
-});
-
-app.get('/price-list', (req, res) => {
-    res.send('Price List');
-});
 
 
 
