@@ -17,6 +17,7 @@ mongoose.connect('mongodb://root:mehedi432@ds125693.mlab.com:25693/sarkartelecom
 });
 
 // Middlewares
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -73,8 +74,6 @@ app.get('/huawei', (req, res) => {
 app.get('/price-list', (req, res) => {
     res.send('Price List');
 });
-
-
 
 
 
